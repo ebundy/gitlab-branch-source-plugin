@@ -63,7 +63,8 @@ public class GitLabPushSCMEvent extends AbstractGitLabSCMHeadEvent<PushEvent> {
 
     @Override
     public boolean isMatch(@NonNull GitLabSCMSource source) {
-        return getPayload().getProject().getId().equals(source.getProjectId());
+//        return getPayload().getProject().getId().equals(source.getProjectId());
+        return source.getGitlabProject().getWebUrl().equalsIgnoreCase(getPayload().getProject().getWebUrl());
     }
 
     @NonNull

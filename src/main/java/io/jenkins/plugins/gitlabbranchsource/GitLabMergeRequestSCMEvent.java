@@ -65,8 +65,7 @@ public class GitLabMergeRequestSCMEvent extends AbstractGitLabSCMHeadEvent<Merge
 
     @Override
     public boolean isMatch(@NonNull GitLabSCMSource source) {
-        return getPayload().getObjectAttributes().getTargetProjectId()
-            .equals(source.getProjectId());
+        return source.getGitlabProject().getWebUrl().equalsIgnoreCase(getPayload().getProject().getWebUrl());
     }
 
     @NonNull
